@@ -5,15 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const slider = document.getElementById(`${freq}hz`);
       slider.addEventListener('input', (event) => {
         const gainValue = parseFloat(event.target.value);
-        
-        chrome.storage.local.get('equalizer', (data) => {
-          const equalizer = data.equalizer;
-          if (equalizer) {
-            const eqNode = equalizer.find(eq => eq.frequency === freq);
-            if (eqNode && eqNode.gain) {
-              eqNode.gain.value = gainValue;
-            }
-          }
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          chrome.tabs.sendMessage(tabs[0].id, {
+            type: 'updateEqualizer',
+            frequency: freq,
+            gain: gainValue
+          });
         });
       });
     });

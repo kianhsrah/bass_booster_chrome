@@ -1,19 +1,22 @@
 {
     "manifest_version": 3,
     "name": "Audio Equalizer",
-    "description": "An equalizer for any audio playing in the tab.",
+    "description": "An equalizer for audio playing on supported websites.",
     "version": "1.0",
     "permissions": [
       "activeTab",
       "tabs",
-      "webRequest",
-      "webRequestBlocking",
-      "audioCapture",
       "storage"
     ],
     "background": {
       "service_worker": "background.js"
     },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
     "action": {
       "default_popup": "popup.html"
     }
