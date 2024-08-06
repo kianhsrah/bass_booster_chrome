@@ -6,11 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
       slider.addEventListener('input', (event) => {
         const gainValue = parseFloat(event.target.value);
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-          chrome.tabs.sendMessage(tabs[0].id, {
-            type: 'updateEqualizer',
-            frequency: freq,
-            gain: gainValue
-          });
+          if (tabs.length > 0) {
+            chrome.tabs.sendMessage(tabs[0].id, {
+              type: 'updateEqualizer',
+              frequency: freq,
+              gain: gainValue
+            }, (response) => {
+              if (response && response.status === 'success') {
+                console.log(`Updated ${freq} Hz to ${gainValue}`);
+              } else {
+                console.error('Failed to update equalizer', response);
+              }
+            });
+          }
         });
       });
     });

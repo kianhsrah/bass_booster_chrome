@@ -46,6 +46,9 @@
         if (eqNode) {
           eqNode.gain.value = gain;
           chrome.storage.local.set({ equalizer: equalizer.map(eq => eq.gain.value) });
+          sendResponse({status: 'success'});
+        } else {
+          sendResponse({status: 'error', message: 'Equalizer node not found'});
         }
       }
     });
