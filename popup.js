@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const frequencies = [60, 170, 350, 1000, 3500, 10000];
-    
+  
     frequencies.forEach((freq) => {
       const slider = document.getElementById(`${freq}hz`);
       slider.addEventListener('input', (event) => {
