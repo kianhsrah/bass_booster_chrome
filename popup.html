@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Equalizer</title>
+  <style>
+    .slider-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="slider-container">
+    <label for="60hz">60 Hz</label>
+    <input type="range" id="60hz" min="-12" max="12" value="0" step="0.1">
+  </div>
+  <div class="slider-container">
+    <label for="170hz">170 Hz</label>
+    <input type="range" id="170hz" min="-12" max="12" value="0" step="0.1">
+  </div>
+  <div class="slider-container">
+    <label for="350hz">350 Hz</label>
+    <input type="range" id="350hz" min="-12" max="12" value="0" step="0.1">
+  </div>
+  <div class="slider-container">
+    <label for="1000hz">1000 Hz</label>
+    <input type="range" id="1000hz" min="-12" max="12" value="0" step="0.1">
+  </div>
+  <div class="slider-container">
+    <label for="3500hz">3500 Hz</label>
+    <input type="range" id="3500hz" min="-12" max="12" value="0" step="0.1">
+  </div>
+  <div class="slider-container">
+    <label for="10000hz">10000 Hz</label>
+    <input type="range" id="10000hz" min="-12" max="12" value="0" step="0.1">
+  </div>
+  <script src="popup.js"></script>
+</body>
+</html>
